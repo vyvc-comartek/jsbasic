@@ -1,9 +1,11 @@
 const axios = require('axios');
+
 const axiosConfig = {
 	baseURL: 'https://jsonplaceholder.typicode.com/',
 	responseType: 'json',
 };
 const client = axios.create(axiosConfig);
+
 //Hàm chạy hiệu ứng loading
 function animate() {
 	console.log('Loading...');
@@ -32,6 +34,7 @@ function getPosts(userId) {
  * thời gian thực thi = tổng thời gian của từng promise
  * Ví dụ dưới đây không giải quyết được vấn đề animation bị kết thúc trước Promise
  */
+
 function afterAuthFulfilled(userData) {
 	//Đã xác thực thành công
 	//Thực hiện lấy posts dựa vào user id
@@ -51,6 +54,7 @@ function finallyRequest() {
 }
 //Sử dụng Promise
 const userId = 1; //Id người dùng muốn đăng nhập
+
 //Khởi chạy animation
 animate();
 //Thực hiện xác thực
@@ -59,6 +63,7 @@ authenticate(userId)
 	.then(afterGetPostsFulfilled)
 	.catch(afterRejected)
 	.finally(finallyRequest);
+
 //Sử dụng Async/Await
 (async function () {
 	try {
